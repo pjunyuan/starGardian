@@ -9,6 +9,7 @@ public class block : MonoBehaviour {
     public int life = 99;
     public Text lifetext;
     public MeshExploder script;
+	public AudioClip deadSound;
 
 	// Use this for initialization
 	void Start () {
@@ -19,9 +20,10 @@ public class block : MonoBehaviour {
 	void Update () {
         lifetext.text = life.ToString();
         if (life == 0)
-        {
-            script.Explode();
-            Destroy(gameObject);
+		{ 
+			script.Explode();
+			SoundManager.instance.PlaySingle(deadSound);
+			Destroy(gameObject);
         }
 	}
 
@@ -32,9 +34,8 @@ public class block : MonoBehaviour {
         {
             life--;
         }
-        
-        
-    }
+
+	}
 
 
 

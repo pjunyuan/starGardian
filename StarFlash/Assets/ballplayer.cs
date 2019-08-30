@@ -5,7 +5,8 @@ using UnityEngine;
 public class ballplayer : MonoBehaviour {
 
     public float force;
-
+	public AudioClip WallHitSound;
+	public AudioClip BallHitSound;
 
 	// Use this for initialization
 	void Start () {
@@ -34,8 +35,21 @@ public class ballplayer : MonoBehaviour {
             GetComponent<MeshExploder>().Explode();
             Destroy(gameObject);
         }
-
     }
+
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.gameObject.tag == "block" )
+		{
+			SoundManager.instance.PlaySingle(BallHitSound);
+		}
+
+		if (collision.gameObject.tag == "wall")
+		{
+			SoundManager.instance.PlaySingle(WallHitSound);
+		}
+
+	}
 
 
 
