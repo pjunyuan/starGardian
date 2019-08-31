@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance;
-    public int level;
+    public static int level = 1;
     public Transform blockparent;
 
 
@@ -30,18 +30,23 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over");
     }
 
-    public void CreateLevel()
-    {
-
-    }
-
     private void Start()
     {
-        Pooly.Spawn("block", new Vector3(0, 4, 0), Quaternion.identity );
+        Spawnblock();
     }
 
+    public void Spawnblock()
+    {
+        for (int i = 0; i < level; i++)
+        {
+            int x = Random.Range(-5, 5);
+            int y = Random.Range(-4, 4);
+            Transform current = Pooly.Spawn("block", new Vector3(x, y, 0), Quaternion.identity);
+            current.GetComponent<block>().life = Random.Range(1, level);
+
+        }
 
 
-
+    }
 
 }

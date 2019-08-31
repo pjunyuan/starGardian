@@ -7,9 +7,8 @@ public class ballplayer : MonoBehaviour {
     public float force;
 	public AudioClip WallHitSound;
 	public AudioClip BallHitSound;
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -49,9 +48,7 @@ public class ballplayer : MonoBehaviour {
 			SoundManager.instance.PlaySingle(WallHitSound);
 		}
 
-	}
-
-
+    }
 
 
 }
